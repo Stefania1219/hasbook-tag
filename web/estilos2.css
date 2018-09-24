@@ -1,0 +1,22 @@
+body{
+ text-align:center;
+ width:100%;
+ margin:0 auto;
+ padding:0px;
+ background: pink;
+}
+h1 {
+    display: grid;
+    text-align:  center;
+    background:seashell;
+    font-size: 90px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    display: block;
+}
+.card {
+    display: inline-grid;
+}

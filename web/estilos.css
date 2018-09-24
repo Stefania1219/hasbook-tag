@@ -11,8 +11,26 @@ h1 {
     background:seashell;
     font-size: 80px;
 }
-div#content1 {
-    display: list-item;
+.button {
+    border-radius:20px;
+    font-size:20px;
+    margin:20px;
+    color:black!important;
+    display:inline-grid;
+    padding:10px 20px 10px 20px;
+    background:seashell;
+}
+.button:hover {
+    color:pink!important
+}
+.button:active {
+    color:pink!important;
+    position:relative;
+    top:1px;     
+ 
+}
+div{
+    display: inline-flex;
 }
 div#content2 {
     display: list-item;

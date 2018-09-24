@@ -19,41 +19,42 @@
 <body>
     <center>
     <header>
-        <h1>Hashbook Tag</h1>
+        <i><h1>Hashbook Tag</h1></i>
     </header>
-    <div id="content1">
-        <img src="img1.jpg" width="200" height="200">
-      
-        <img src="img2.jpg "width="200" height="200">
-    
-        <img src="img3.jpg"width="200" height="200">
-       
-        <img src="img4.jpg"width="200" height="200">
-        </div>
-    <div id="content2">
-<form>
-        <div class ="form-group row">
-        <label for="inputEmail3" class="col-sm2 col-form-label">Correo</label>
-        <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail3" placeholder="Correo">
-        </div>
-        
-        <div class ="form-group row">
-        <label for="inputPassword3" class="col-sm2 col-form-label">Contraseña</label>
-        <div class="col-sm-10">
-        <input type="Password" class="form-control" id="inputPassword3" placeholder="Contraseña">
-        </div>
+        <a class="button" href="http://localhost:8080/hashbook%20tag/CrearEvento" rel="nofollow" target="_blank">Crear Evento</a>
+        <a class="button" href="http://localhost:8080/hashbook%20tag/VerEvento" rel="nofollow" target="_blank">Ver Evento</a>
         <br>
-        <div>
-        <button type="submit" class="btn btn-primary">Inciar Sesión</button> 
-        </div>
-        </br>
-        <a title="Instagram" href="https://www.instagram.com/?hl=es-la"><img src="img5.jpg"width="50" height="50"alt=Instagram></a>
-        </div>
-    
-        </form>
-    </div>
-    
+    <div class="card" style="width: 19rem;">
+                    <img class="card-img-top" src="img1.jpg" width="250" height="250" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Mundial </h3>
+                      <p class="card-text">Esta evento se realizó entre el 14 de junio y el 15 de julio de 2018 en Rusia, que consiguió los derechos de organización el 2 de diciembre de 2010.</p>
+                    </div>
+     </div>
+        
+     <div class="card" style="width: 19rem;">
+                    <img class="card-img-top" src="img2.jpg" width="250" height="250" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Tomorrowland </h3>
+                      <p class="card-text">El festival de música electrónica más grande del mundo,tiene de una decoración que simula un mundo de fantasía.</p>
+                   </div>
+     </div>
+        
+   <div class="card" style="width: 19rem;">
+                    <img class="card-img-top" src="img3.jpg" width="250" height="250" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Feria de las flores</h3>
+                      <p class="card-text">La Feria de las Flores es una de las festividades más importantes de Colombia. Se celebra cada año en Medellín, capital del departamento de Antioquia. </p>
+                    </div>
+     </div>
+        
+    <div class="card" style="width: 19rem;">
+                    <img class="card-img-top" src="img4.jpg" width="250" height="250" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Olimpíadas</h3>
+                      <p class="card-text">Los Juegos Olímpicos son considerados la principal competición del mundo deportivo, con más de doscientas naciones participantes.</p>
+                    </div>
+     </div> 
    
 </body>
 </html>

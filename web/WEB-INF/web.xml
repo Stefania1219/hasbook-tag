@@ -4,9 +4,25 @@
         <servlet-name>Index</servlet-name>
         <servlet-class>controladores.Index</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearEvento</servlet-name>
+        <servlet-class>controladores.CrearEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerEvento</servlet-name>
+        <servlet-class>controladores.VerEvento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearEvento</servlet-name>
+        <url-pattern>/CrearEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerEvento</servlet-name>
+        <url-pattern>/VerEvento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
