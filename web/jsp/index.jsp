@@ -21,8 +21,8 @@
     <header>
         <i><h1>Hashbook Tag</h1></i>
     </header>
-        <a class="button" href="http://localhost:8080/hashbook%20tag/CrearEvento" rel="nofollow" target="_blank">Crear Evento</a>
-        <a class="button" href="http://localhost:8080/hashbook%20tag/VerEvento" rel="nofollow" target="_blank">Ver Evento</a>
+        <a class="button" href="CrearEvento" rel="nofollow" target="_blank">Crear Evento</a>
+        <a class="button" href="VerEvento" rel="nofollow" target="_blank">Ver Evento</a>
         <br>
     <div class="card" style="width: 19rem;">
                     <img class="card-img-top" src="img1.jpg" width="250" height="250" alt="Card image cap">
