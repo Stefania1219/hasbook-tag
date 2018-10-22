@@ -59,7 +59,25 @@ public class CrearEvento extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("jsp/ver-evento.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/crear-evento.jsp");
+        
+       
+        String nombre = request.getParameter("nombre");
+        String imagen = request.getParameter("imagen");
+        String hashtag = request.getParameter("hashtag");
+        String descripcion = request.getParameter("descripcion");
+        
+//        if(idCrearEvento == null || idCrearEvento.equals("")){
+//            guardarEvento(nombre, imagen, hashtag, descripcion);
+//        } else {
+//            int idCrearEventoStr = Integer.parseInt((String) idCrearEvento);
+//            actualizarImagen((int) idCrearEvento, nombre, imagen, hashtag, descripcion);
+//        }
+        
+        guardarEvento(nombre, imagen, hashtag, descripcion);
+        
+        List<Evento> listaEventos = new ArrayList<Evento>();
+        request.setAttribute("eventos", listaEventos);
         
         rd.forward(request, response);
     }
@@ -74,21 +92,24 @@ public class CrearEvento extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
-    private void guardarEvento(String idCrearEvento, String nombre, String imagen, String hashtag, String descripcion) {
+    private void guardarEvento(String nombre, String imagen, String hashtag, String descripcion) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejemplo", "root", "");
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO `hashbook_tag`.`crearevento` (`idCrearEvento`, `nombre`, `imagen`, `hashtag`, `descripcion` ) VALUES (?, ?, ?, ?, ?, ?)");
-            ps.setString(1, idCrearEvento);
-            ps.setString(2, nombre);
-            ps.setString(3, imagen);
-            ps.setString(4, hashtag);
-            ps.setString(5, descripcion);
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
+            PreparedStatement ps = conexion.prepareStatement("INSERT INTO `hashbook_tag`.`crearevento` (`nombre`, `imagen`, `hashtag`, `descripcion` ) VALUES (?, ?, ?, ?)");
+            ps.setString(1, nombre);
+            ps.setString(2, imagen);
+            ps.setString(3, hashtag);
+            ps.setString(4, descripcion);
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void actualizarImagen(int idCrearEvento, String nombre, String imagen, String hashtag, String descripcion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

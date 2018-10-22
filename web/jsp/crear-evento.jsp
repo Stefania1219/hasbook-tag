@@ -52,9 +52,9 @@
         <i><h2>Formulario de Evento</h2></i>
 
         <label>Nombre del evento </label><input type="text" name="nombre" size="37" maxlength="150" />
-        <label>Insertar imagen</label><input type="image" name="imagen" size="37" maxlength="150" />
-        <label>Hashtag</label><input type="text" name="Hashtag" size="37" maxlength="105"/>
-        <label>Descripción del evento</label><textarea name="Descripción" cols="30" rows="7"></textarea>
+        <label>Insertar imagen</label><input type="imagen" name="imagen" size="37" maxlength="150" />
+        <label>Hashtag</label><input type="text" name="hashtag" size="37" maxlength="105"/>
+        <label>Descripción del evento</label><input type="text" name="descripcion" size="37" maxlength="105"/>
         <br>
         <input type="submit" value="Crear evento" />
         <a title="Instagram" href="https://www.instagram.com/?hl=es-la"><img src="img5.jpg"width="50" height="50"alt=Instagram></a>
