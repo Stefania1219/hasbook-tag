@@ -47,12 +47,12 @@
     <center>
         <i><h1>Crear Evento</h1></i>
     
-    <form>
+    <form name="crear-evento" action="CrearEvento" method="POST">
   
         <i><h2>Formulario de Evento</h2></i>
 
-        <label>Nombre del evento </label><input type="text" name="Nombre" size="37" maxlength="150" />
-        <label>Insertar imagen</label><input type="text" name="Nombre" size="37" maxlength="150" />
+        <label>Nombre del evento </label><input type="text" name="nombre" size="37" maxlength="150" />
+        <label>Insertar imagen</label><input type="image" name="imagen" size="37" maxlength="150" />
         <label>Hashtag</label><input type="text" name="Hashtag" size="37" maxlength="105"/>
         <label>Descripción del evento</label><textarea name="Descripción" cols="30" rows="7"></textarea>
         <br>
