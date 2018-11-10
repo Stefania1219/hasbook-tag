@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,8 @@ public class CrearEvento extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("jsp/crear-evento.jsp");
-        List<Evento> listaEventos = new ArrayList<Evento>();
-        request.setAttribute("eventos", listaEventos);
+        List<Evento> listaEvento = new ArrayList<Evento>();
+        request.setAttribute("eventos", listaEvento);
         rd.forward(request, response);
     }
 
@@ -61,7 +62,7 @@ public class CrearEvento extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("jsp/crear-evento.jsp");
         
-       
+        String idCrearEventoStr = request.getParameter("idCrearEvento");
         String nombre = request.getParameter("nombre");
         String imagen = request.getParameter("imagen");
         String hashtag = request.getParameter("hashtag");
@@ -76,8 +77,15 @@ public class CrearEvento extends HttpServlet {
         
         guardarEvento(nombre, imagen, hashtag, descripcion);
         
-        List<Evento> listaEventos = new ArrayList<Evento>();
-        request.setAttribute("eventos", listaEventos);
+        List<Evento> listaEvento = new ArrayList<Evento>();
+        request.setAttribute("eventos", listaEvento);
+        
+        if(idCrearEventoStr != null && !idCrearEventoStr.equals("")){
+            int idCrearEvento = Integer.parseInt(idCrearEventoStr);
+            actualizarEvento(idCrearEvento, nombre, imagen, hashtag, descripcion);
+        } else {
+            guardarEvento(nombre, imagen, hashtag, descripcion);
+        }
         
         rd.forward(request, response);
     }
@@ -108,8 +116,52 @@ public class CrearEvento extends HttpServlet {
             Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    List<Evento> eventos() {
+        List<Evento> listaEvento = new ArrayList<Evento>();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
+            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM crearevento");
+            ResultSet resultados = ps.executeQuery();
+            while(resultados.next()) {
+                int idCrearEvento = resultados.getInt("idCrearEvento");
+                String nombre = resultados.getString("nombre");
+                String imagen = resultados.getString("imagen");
+                String hashtag = resultados.getString("hashtag");
+                String descripcion = resultados.getString("descripcion");
+                Evento e = new Evento();
+                e.idCrearEvento = idCrearEvento;
+                e.nombre = nombre;
+                e.imagen = imagen;
+                e.hashtag = hashtag;
+                e.descripcion = descripcion;
+                listaEvento.add(e);
+            }
+            conexion.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaEvento;
+    }
 
-    private void actualizarImagen(int idCrearEvento, String nombre, String imagen, String hashtag, String descripcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void actualizarEvento(int idCrearEvento, String nombre, String imagen, String hashtag, String descripcion) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
+            PreparedStatement ps = conexion.prepareStatement("UPDATE `hashbook_tag`.`crearevento` SET `nombre` = ?, `imagen` = ?, `hashtag` = ?, `descripcion` = ? WHERE `idCrearEvento` = ?");
+            ps.setString(1, nombre);
+            ps.setString(2, imagen);
+            ps.setString(3, hashtag);
+            ps.setString(4, descripcion);
+            ps.setInt(5, idCrearEvento);
+            ps.execute();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

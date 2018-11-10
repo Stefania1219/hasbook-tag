@@ -107,7 +107,7 @@ public class VerEvento extends HttpServlet {
                 String hashtag = resultados.getString("hashtag");
                 String descripcion = resultados.getString("descripcion");
                 Evento e = new Evento();
-                e.idevento = idevento;
+                e.idCrearEvento = idevento;
                 e.nombre = nombre;
                 e.imagen = imagen;
                 e.hashtag = hashtag;

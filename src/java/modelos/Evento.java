@@ -9,7 +9,7 @@ package modelos;
  * @author Usuario
  */
 public class Evento {
-    public int idevento;
+    public int idCrearEvento;
     public String nombre;
     public String imagen;
     public String hashtag;
