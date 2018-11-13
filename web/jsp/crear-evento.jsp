@@ -90,13 +90,13 @@
         <script>
                 function editarEvento(id, nombre, imagen, hashtag, descripcion){
                     //alert(id + " " + nombre + " " + ruta);
-                    var inputId = document.getElementById("idCrearEvento");
+                    var inputidCrearEvento = document.getElementById("idCrearEvento");
                     var inputNombre = document.getElementById("nombre");
                     var inputImagen = document.getElementById("imagen");
                     var inputHashtag = document.getElementById("hashtag");
                     var inputDescripcion = document.getElementById("descripcion");
                     
-                    inputId.value = id;
+                    inputidCrearEvento.value = id;
                     inputNombre.value = nombre;
                     inputImagen.value = imagen;
                     inputHashtag.value = hashtag;

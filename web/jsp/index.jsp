@@ -24,15 +24,15 @@
         <a class="button" href="CrearEvento" rel="nofollow" target="_blank">Crear Evento</a>
         <a class="button" href="VerEvento" rel="nofollow" target="_blank">Ver Evento</a>
         <br>
-    <div class="card" style="width: 19rem;">
+    <div class="card" style="width: 16rem;">
                     <img class="card-img-top" src="img1.jpg" width="250" height="250" alt="Card image cap">
                     <div class="card-body">
-                        <h3 class="card-title">Mundial </h3>
+                        <h3 class="card-title">Copa mundial de futbol</h3>
                       <p class="card-text">Esta evento se realizó entre el 14 de junio y el 15 de julio de 2018 en Rusia, que consiguió los derechos de organización el 2 de diciembre de 2010.</p>
                     </div>
      </div>
         
-     <div class="card" style="width: 19rem;">
+     <div class="card" style="width: 16rem;">
                     <img class="card-img-top" src="img2.jpg" width="250" height="250" alt="Card image cap">
                     <div class="card-body">
                         <h3 class="card-title">Tomorrowland </h3>
@@ -40,7 +40,7 @@
                    </div>
      </div>
         
-   <div class="card" style="width: 19rem;">
+   <div class="card" style="width: 16rem;">
                     <img class="card-img-top" src="img3.jpg" width="250" height="250" alt="Card image cap">
                     <div class="card-body">
                         <h3 class="card-title">Feria de las flores</h3>
@@ -48,10 +48,10 @@
                     </div>
      </div>
         
-    <div class="card" style="width: 19rem;">
+    <div class="card" style="width: 16rem;">
                     <img class="card-img-top" src="img4.jpg" width="250" height="250" alt="Card image cap">
                     <div class="card-body">
-                        <h3 class="card-title">Olimpíadas</h3>
+                        <h3 class="card-title">Juegos Olímpicos</h3>
                       <p class="card-text">Los Juegos Olímpicos son considerados la principal competición del mundo deportivo, con más de doscientas naciones participantes.</p>
                     </div>
      </div> 

@@ -77,8 +77,13 @@ public class CrearEvento extends HttpServlet {
         
         guardarEvento(nombre, imagen, hashtag, descripcion);
         
-        List<Evento> listaEvento = new ArrayList<Evento>();
-        request.setAttribute("eventos", listaEvento);
+        List<Evento> listaEventos;
+        try {
+            listaEventos = todosLosEventos();
+            request.setAttribute("eventos", listaEventos);
+        } catch (SQLException ex) {
+            Logger.getLogger(VerEvento.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         if(idCrearEventoStr != null && !idCrearEventoStr.equals("")){
             int idCrearEvento = Integer.parseInt(idCrearEventoStr);
@@ -104,7 +109,8 @@ public class CrearEvento extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO `hashbook_tag`.`crearevento` (`nombre`, `imagen`, `hashtag`, `descripcion` ) VALUES (?, ?, ?, ?)");
+            PreparedStatement ps = conexion.prepareStatement("INSERT INTO `hashbook_tag`.`crearevento` "
+                    + "(`nombre`, `imagen`, `hashtag`, `descripcion` ) VALUES (?, ?, ?, ?)");
             ps.setString(1, nombre);
             ps.setString(2, imagen);
             ps.setString(3, hashtag);
@@ -117,14 +123,15 @@ public class CrearEvento extends HttpServlet {
         }
     }
     
-    List<Evento> eventos() {
-        List<Evento> listaEvento = new ArrayList<Evento>();
+    private List<Evento> todosLosEventos() throws SQLException {
+        Connection conexion = null;
+        List<Evento> eventos = new ArrayList<Evento>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
             PreparedStatement ps = conexion.prepareStatement("SELECT * FROM crearevento");
             ResultSet resultados = ps.executeQuery();
-            while(resultados.next()) {
+            while (resultados.next()) {
                 int idCrearEvento = resultados.getInt("idCrearEvento");
                 String nombre = resultados.getString("nombre");
                 String imagen = resultados.getString("imagen");
@@ -136,22 +143,26 @@ public class CrearEvento extends HttpServlet {
                 e.imagen = imagen;
                 e.hashtag = hashtag;
                 e.descripcion = descripcion;
-                listaEvento.add(e);
+                eventos.add(e);
             }
-            conexion.close();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VerEvento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(CrearEvento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VerEvento.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if(conexion != null && !conexion.isClosed()) {
+                conexion.close();
+            }
         }
-        return listaEvento;
+        return eventos;
     }
 
     private void actualizarEvento(int idCrearEvento, String nombre, String imagen, String hashtag, String descripcion) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
-            PreparedStatement ps = conexion.prepareStatement("UPDATE `hashbook_tag`.`crearevento` SET `nombre` = ?, `imagen` = ?, `hashtag` = ?, `descripcion` = ? WHERE `idCrearEvento` = ?");
+            PreparedStatement ps = conexion.prepareStatement("UPDATE `hashbook_tag`.`crearevento` SET `nombre` = ?, "
+                    + "`imagen` = ?, `hashtag` = ?, `descripcion` = ? WHERE `idCrearEvento` = ?");
             ps.setString(1, nombre);
             ps.setString(2, imagen);
             ps.setString(3, hashtag);

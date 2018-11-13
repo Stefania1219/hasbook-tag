@@ -98,16 +98,16 @@ public class VerEvento extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/hashbook_tag", "root", "");
-            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM evento");
+            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM crearevento");
             ResultSet resultados = ps.executeQuery();
             while (resultados.next()) {
-                int idevento = resultados.getInt("idevento");
+                int idCrearEvento = resultados.getInt("idCrearEvento");
                 String nombre = resultados.getString("nombre");
                 String imagen = resultados.getString("imagen");
                 String hashtag = resultados.getString("hashtag");
                 String descripcion = resultados.getString("descripcion");
                 Evento e = new Evento();
-                e.idCrearEvento = idevento;
+                e.idCrearEvento = idCrearEvento;
                 e.nombre = nombre;
                 e.imagen = imagen;
                 e.hashtag = hashtag;
