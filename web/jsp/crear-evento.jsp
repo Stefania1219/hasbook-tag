@@ -12,34 +12,34 @@
         <link href="estilos.css" type="text/css" rel="stylesheet"/>
         <title>Crear evento</title>
         <style>
-    form
-    {
-       padding:3px;
-       display:inline-block;
-       margin:auto;
-      
-    }
-    input[type="text"] {
-    display: unset;
-   }
-    label
-    {
-       display: block;
-       padding:2px;
-       margin:2px;
-       cursor:pointer;
-    }
+            form
+            {
+                padding:3px;
+                display:inline-block;
+                margin:auto;
 
-    input,select{
-       margin:2px; 
-       font-family: "Trebuchet MS", Geneva, Arial, Helvetica, sans-serif;
-       font-size: 12px;
-       display: block;
-    }
-    .noblck
-    {
-       display: inline;
-    }
+            }
+            input[type="text"] {
+                display: unset;
+            }
+            label
+            {
+                display: block;
+                padding:2px;
+                margin:2px;
+                cursor:pointer;
+            }
+
+            input,select{
+                margin:2px; 
+                font-family: "Trebuchet MS", Geneva, Arial, Helvetica, sans-serif;
+                font-size: 12px;
+                display: block;
+            }
+            .noblck
+            {
+                display: inline;
+            }
         </style>
     </head>
     <body>
@@ -47,63 +47,63 @@
         <i><h1>Crear Evento</h1></i>
         <%@page import="java.util.List" %>
         <%@page import="modelos.Evento" %>
-    <%
-        List<Evento> listaEvento = (List<Evento>)request.getAttribute("eventos");
+        <%
+            List<Evento> listaEvento = (List<Evento>) request.getAttribute("eventos");
         %>
-    <form name="crear-evento" action="CrearEvento" method="POST">
-  
-        <i><h2>Formulario de Evento</h2></i>
+        <form name="crear-evento" action="CrearEvento" method="POST">
 
-        <label>Nombre del evento </label><input type="text" name="nombre" size="37" maxlength="150" />
-        <label>Insertar imagen</label><input type="imagen" name="imagen" size="37" maxlength="150" />
-        <label>Hashtag</label><input type="text" name="hashtag" size="37" maxlength="105"/>
-        <label>Descripción del evento</label><input type="text" name="descripcion" size="37" maxlength="105"/>
-        <br>
-        <input type="submit" value="Crear evento" />
+            <i><h2>Formulario de Evento</h2></i>
+            <input type="hidden" id="idCrearEvento" name="idCrearEvento" />
+            <label>Nombre del evento </label><input type="text" name="nombre" id="nombre" size="37" maxlength="150" />
+            <label>Insertar imagen</label><input type="text" name="imagen" id="imagen" size="37" maxlength="150" />
+            <label>Hashtag</label><input type="text" name="hashtag" id="hashtag" size="37" maxlength="105"/>
+            <label>Descripción del evento</label><input type="text" name="descripcion" id="descripcion" size="37" maxlength="105"/>
+            <br>
+            <input type="submit" value="Crear evento"  method="POST"/>
+        </form>
         <table border="1">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>nombre</th>
-                        <th>imagen</th>
-                        <th>hashtag</th>
-                        <th>descripción</th>
-                        <th>editar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                    for(Evento e : listaEvento) {%>
-                    <tr>
-                        <td><%= e.idCrearEvento%></td>
-                        <td><%= e.nombre%></td>
-                        <td><%= e.imagen%></td>
-                        <td><%= e.hashtag%></td>
-                        <td><%= e.descripcion%></td>
-                        <td><image class="edit" onclick="editarEvento(<%= e.idCrearEvento%>, '<%= e.nombre%>', '<%= e.imagen%>', '<%= e.hashtag%>', '<%= e.descripcion%>')" src="https://icon-icons.com/icons2/906/PNG/512/pencil_icon-icons.com_69999.png" /></td>
-                    </tr>
-                    <%
-                    }%>
-                </tbody>
-            </table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>nombre</th>
+                    <th>imagen</th>
+                    <th>hashtag</th>
+                    <th>descripción</th>
+                    <th>editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                        for (Evento e : listaEvento) {%>
+                <tr>
+                    <td><%= e.idCrearEvento%></td>
+                    <td><%= e.nombre%></td>
+                    <td><%= e.imagen%></td>
+                    <td><%= e.hashtag%></td>
+                    <td><%= e.descripcion%></td>
+                    <td><image class="edit" onclick="editarEvento(<%= e.idCrearEvento%>, '<%= e.nombre%>', '<%= e.imagen%>', '<%= e.hashtag%>', '<%= e.descripcion%>')" src="img9.png" width="90" height="90" /></td>
+                </tr>
+                <%
+                        }%>
+            </tbody>
+        </table>
         <a title="Instagram" href="https://www.instagram.com/?hl=es-la"><img src="img5.jpg"width="50" height="50"alt=Instagram></a>
         <script>
-                function editarEvento(id, nombre, imagen, hashtag, descripcion){
-                    //alert(id + " " + nombre + " " + ruta);
-                    var inputidCrearEvento = document.getElementById("idCrearEvento");
-                    var inputNombre = document.getElementById("nombre");
-                    var inputImagen = document.getElementById("imagen");
-                    var inputHashtag = document.getElementById("hashtag");
-                    var inputDescripcion = document.getElementById("descripcion");
-                    
-                    inputidCrearEvento.value = id;
-                    inputNombre.value = nombre;
-                    inputImagen.value = imagen;
-                    inputHashtag.value = hashtag;
-                    inputDescripcion.value = descripcion;
-                }
-            </script>
-    </form>
+            function editarEvento(id, nombre, imagen, hashtag, descripcion) {
+                //alert(id + " " + nombre + " " + ruta);
+                var inputidCrearEvento = document.getElementById("idCrearEvento");
+                var inputNombre = document.getElementById("nombre");
+                var inputImagen = document.getElementById("imagen");
+                var inputHashtag = document.getElementById("hashtag");
+                var inputDescripcion = document.getElementById("descripcion");
+
+                inputidCrearEvento.value = id;
+                inputNombre.value = nombre;
+                inputImagen.value = imagen;
+                inputHashtag.value = hashtag;
+                inputDescripcion.value = descripcion;
+            }
+        </script>
     </center>
-    </body>
+</body>
 </html>

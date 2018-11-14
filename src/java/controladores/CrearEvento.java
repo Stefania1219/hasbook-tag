@@ -5,7 +5,6 @@
 package controladores;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,7 +42,7 @@ public class CrearEvento extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("jsp/crear-evento.jsp");
-        List<Evento> listaEvento = new ArrayList<Evento>();
+        List<Evento> listaEvento = todosLosEventos();
         request.setAttribute("eventos", listaEvento);
         rd.forward(request, response);
     }
@@ -68,29 +67,16 @@ public class CrearEvento extends HttpServlet {
         String hashtag = request.getParameter("hashtag");
         String descripcion = request.getParameter("descripcion");
         
-//        if(idCrearEvento == null || idCrearEvento.equals("")){
-//            guardarEvento(nombre, imagen, hashtag, descripcion);
-//        } else {
-//            int idCrearEventoStr = Integer.parseInt((String) idCrearEvento);
-//            actualizarImagen((int) idCrearEvento, nombre, imagen, hashtag, descripcion);
-//        }
-        
-        guardarEvento(nombre, imagen, hashtag, descripcion);
-        
-        List<Evento> listaEventos;
-        try {
-            listaEventos = todosLosEventos();
-            request.setAttribute("eventos", listaEventos);
-        } catch (SQLException ex) {
-            Logger.getLogger(VerEvento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if(idCrearEventoStr != null && !idCrearEventoStr.equals("")){
+        if(idCrearEventoStr == null || idCrearEventoStr.equals("")){
+            guardarEvento(nombre, imagen, hashtag, descripcion);
+        } else {
             int idCrearEvento = Integer.parseInt(idCrearEventoStr);
             actualizarEvento(idCrearEvento, nombre, imagen, hashtag, descripcion);
-        } else {
-            guardarEvento(nombre, imagen, hashtag, descripcion);
         }
+        
+        List<Evento> listaEventos;
+        listaEventos = todosLosEventos();
+        request.setAttribute("eventos", listaEventos);
         
         rd.forward(request, response);
     }
@@ -123,7 +109,7 @@ public class CrearEvento extends HttpServlet {
         }
     }
     
-    private List<Evento> todosLosEventos() throws SQLException {
+    private List<Evento> todosLosEventos() {
         Connection conexion = null;
         List<Evento> eventos = new ArrayList<Evento>();
         try {
@@ -145,15 +131,12 @@ public class CrearEvento extends HttpServlet {
                 e.descripcion = descripcion;
                 eventos.add(e);
             }
+            conexion.close();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VerEvento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(VerEvento.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if(conexion != null && !conexion.isClosed()) {
-                conexion.close();
-            }
-        }
+        } 
         return eventos;
     }
 

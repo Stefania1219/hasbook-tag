@@ -7,6 +7,11 @@
         <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
         <link href="estilos2.css" type="text/css" rel="stylesheet"/>
         <script src="main.js"></script>
+        <style>
+            .card {
+           display: inline-grid;
+               }
+    </style>
     </head>
     <body>
         <%@page import="java.util.List" %>

@@ -12,6 +12,10 @@
         <servlet-name>VerEvento</servlet-name>
         <servlet-class>controladores.VerEvento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FormularioUsuarios</servlet-name>
+        <servlet-class>controladores.FormularioUsuarios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>VerEvento</servlet-name>
         <url-pattern>/VerEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FormularioUsuarios</servlet-name>
+        <url-pattern>/FormularioUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

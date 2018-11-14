@@ -4,6 +4,7 @@
     Author     : Usuario
 --%>
 
+<%@page import="modelos.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,14 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link href="estilos.css" type="text/css" rel="stylesheet"/>
     <script src="main.js"></script>
+    <style>
+     .card {
+    display: inline-grid;
+        }
+     h2 {
+    background: seashell;
+        }
+    </style>
 </head>
 <body>
     <center>
@@ -54,7 +63,64 @@
                         <h3 class="card-title">Juegos Olímpicos</h3>
                       <p class="card-text">Los Juegos Olímpicos son considerados la principal competición del mundo deportivo, con más de doscientas naciones participantes.</p>
                     </div>
-     </div> 
-   
+     </div>
+        <h2>Registro de usuario</h2>
+   <div class="container">
+        <form method="get" action="FormularioUsuarios">
+            <div class="form-group">
+                <label for="inputNombre">Nombre</label>
+                <input name="nombre" type="text" class="form-control" id="inputNombre" aria-describedby="emailHelp" placeholder="Ingrese su nombre">
+            </div>
+            <div class="form-group">
+                <label for="inputCorreo">Correo</label>
+                <input name="correo" type="email" class="form-control" id="inputCorreo" aria-describedby="emailHelp" placeholder="Ingrese su correo">
+            </div>
+            <div class="form-group">
+                <label for="inputContrasena">Contraseña</label>
+                <input name="contrasenia" type="password" class="form-control" id="inputContrasena" aria-describedby="emailHelp" placeholder="Ingrese su contraseña">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+          <input type="submit" value="Usuario"  method="POST"/>
+        <table border="1">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                        <th>correo</th>
+                        <th>contraseña</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    for(Usuario u : guardarUsuario) {%>
+                    <tr>
+                        <td><%= u.idFormularioUsuarios%></td>
+                        <td><%= u.nombre%></td>
+                        <td><%= u.correo%></td>
+                        <td><%= u.contrasenia%></td>
+                        <td><image class="edit" onclick="guardarUsuario(<%= u.idFormularioUsuarios%>, '<%= u.nombre%>', '<%= u.correo%>', '<%= u.contrasenia%>)" src="img9.png" width="90" height="90" /></td>
+                    </tr>
+                    <%
+                    }%>
+                </tbody>
+            </table>
+        <a title="Instagram" href="https://www.instagram.com/?hl=es-la"><img src="img5.jpg"width="50" height="50"alt=Instagram></a>
+        <script>
+                function Usuario(id, nombre, correo, contrasenia){
+                    //alert(id + " " + nombre + " " + ruta);
+                    var inputidFormularioUsuarios = document.getElementById("idFormularioUsuarios");
+                    var inputnombre = document.getElementById("nombre");
+                    var inputcorreo = document.getElementById("correo");
+                    var inputcontrasenia = document.getElementById("contrasenia");
+                    
+                    inputidFormularioUsuarios.value = id;
+                    inputnombre.value = nombre;
+                    inputcorreo.value = correo;
+                    inputcontrasenia.value = contrasenia;
+                }
+            </script>
+    </form>
+        </form>
+        
 </body>
 </html>
