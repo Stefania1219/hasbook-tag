@@ -64,7 +64,7 @@
                       <p class="card-text">Los Juegos Olímpicos son considerados la principal competición del mundo deportivo, con más de doscientas naciones participantes.</p>
                     </div>
      </div>
-        <h2>Registro de usuario</h2>
+        <i><h2>Registro de usuario</h2></i>
    <div class="container">
         <form method="get" action="FormularioUsuarios">
             <div class="form-group">
@@ -92,7 +92,7 @@
                 </thead>
                 <tbody>
                     <%
-                    for(Usuario u : guardarUsuario) {%>
+                    for(Usuario u :Usuario) {%>
                     <tr>
                         <td><%= u.idFormularioUsuarios%></td>
                         <td><%= u.nombre%></td>
