@@ -10,10 +10,6 @@ package modelos;
  * @author Usuario
  */
 public class Usuario {
-
-    public static void add(Usuario u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     public String nombre;
     public String correo;
     public String contrasenia;
