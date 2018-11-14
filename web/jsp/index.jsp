@@ -105,6 +105,8 @@
                 </tbody>
             </table>
         <a title="Instagram" href="https://www.instagram.com/?hl=es-la"><img src="img5.jpg"width="50" height="50"alt=Instagram></a>
+        <a title="Facebook" href="https://es-la.facebook.com/"><img src="img10.png"width="50" height="50"alt=Facebook></a>
+        <a title="Gmail" href="https://www.instagram.com/?hl=es-la"><img src="img11.jpg"width="50" height="50"alt=Gmail></a>
         <script>
                 function Usuario(id, nombre, correo, contrasenia){
                     //alert(id + " " + nombre + " " + ruta);
